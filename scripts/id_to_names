@@ -1,0 +1,23 @@
+#! /bin/bash
+#
+# This script can be used to turn a SPIR-V that uses numerical ids, to one
+# where those ids are resolved to friendly names.  This can be useful to
+# decipher messages from spirv-val when they specify the friendly name only.
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <spirv_file>"
+  exit 1
+fi
+
+set -e
+
+target_env=vulkan1.0
+
+# Assemble into a temp file
+echo "Assembling $1 ..."
+as_out="$(mktemp)"
+spirv-as "$1" --target-env "$target_env" --preserve-numeric-ids -o "$as_out"
+
+# Disassmble with friendly names
+echo "Disassembling ..."
+spirv-dis "$as_out"

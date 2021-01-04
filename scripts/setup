@@ -1,0 +1,26 @@
+#! /bin/bash
+
+root_dir="$(dirname "${BASH_SOURCE[0]}")/.."
+build_dir="$root_dir/build/"
+spirv_cross_relative_to_build_dir="../third_party/spirv-cross/"
+
+echo "Initializing submodules ..."
+git submodule init
+git submodule update
+
+echo "Building SPIR-V Cross ..."
+rm -rf "$build_dir"
+mkdir "$build_dir"
+pushd "$build_dir" > /dev/null
+cmake "$spirv_cross_relative_to_build_dir"
+make -j
+popd > /dev/null
+
+echo ""
+echo "NOTE:"
+echo "Make sure to have spirv-as(1) and spirv-val(1) installed."
+echo "Additionally, highlight(1) is suggested."
+echo ""
+echo " - On a debian-based system:"
+echo "    \$ sudo apt install spirv-tools highlight"
+echo ""

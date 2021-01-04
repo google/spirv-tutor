@@ -1,0 +1,36 @@
+#! /bin/bash
+#
+# This script is used by the tutorials to assemble a hand-crafted SPIR-V,
+# validate it and generate the corresponding GLSL code.
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <spirv_file>"
+  exit 1
+fi
+
+set -e
+
+target_env=vulkan1.0
+build_dir="$(dirname "${BASH_SOURCE[0]}")/../build"
+
+# Assemble into a temp file
+echo "Assembling $1 ..."
+as_out="$(mktemp)"
+spirv-as "$1" --target-env "$target_env" --preserve-numeric-ids -o "$as_out"
+
+# Validate it
+echo "Validating ..."
+spirv-val "$as_out" --target-env "$target_env"
+
+# Generate glsl into a temp file.  If highlight is available, print it with
+# pretty colors.
+#
+# NOTE: having trouble with color?  Try changing xterm256 to ansi.
+echo "Generating GLSL ..."
+glsl_out="$(mktemp)"
+"$build_dir"/spirv-cross --vulkan-semantics "$as_out" --output "$glsl_out"
+if which highlight > /dev/null; then
+  cat "$glsl_out" | highlight --syntax c -O xterm256 --style darkness
+else
+  cat "$glsl_out"
+fi
