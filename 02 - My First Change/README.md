@@ -5,7 +5,7 @@ tutorial as warm up.
 
 ## Comments
 
-In SPIR-V, comments start with `;`.  Try adding comments to `exercise.spirv`.  Validate the changes
+In SPIR-V, comments start with `;`.  Try adding comments to `exercise.spvasm`.  Validate the changes
 by calling:
 
     $ ./validate
@@ -15,7 +15,7 @@ Can you comment on the same line as an instruction?
 ## Naming Ids
 
 In the previous tutorial, it was mentioned that `%` ids can be either numerical or c-style variable
-names.  Try changing `exercise.spirv` by replacing numerical ids with names.  For example, a good
+names.  Try changing `exercise.spvasm` by replacing numerical ids with names.  For example, a good
 substitute for `%3` can be `%main`, and a good substitute for `%1` can be `%void`.
 
 Now try introducing an intentional mistake.  For example, change the definition of `%1` to:
@@ -45,11 +45,11 @@ numerical value remains.
 To see the SPIR-V after named ids are resolved, you can assemble and disassemble the SPIR-V.  The
 `scripts/names_to_id` script does this:
 
-    $ ../scripts/names_to_id exercise.spirv
+    $ ../scripts/names_to_id exercise.spvasm
 
 ## Renaming "main"
 
-Revert `exercise.spirv` back to its original state.  Here's how it looked like, in case this is not
+Revert `exercise.spvasm` back to its original state.  Here's how it looked like, in case this is not
 a `git` checkout:
 
 ```elisp

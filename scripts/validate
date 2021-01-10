@@ -2,4 +2,4 @@
 
 exercise_dir="$(dirname "${BASH_SOURCE[0]}")"
 
-"$exercise_dir"/../scripts/test_spirv "$exercise_dir"/exercise.spirv
+"$exercise_dir"/../scripts/test_spirv "$exercise_dir"/exercise.spvasm

@@ -5,7 +5,7 @@ something useful (albeit mundane).
 
 ## An Output Variable
 
-In the previous exercise, we added an attribute to the vertex shader in `exercise.spirv`.  In this
+In the previous exercise, we added an attribute to the vertex shader in `exercise.spvasm`.  In this
 exercise, we will add an output of the same type:
 
 ```c
@@ -51,7 +51,7 @@ you should see an error message now.  Where did we see a similar one before?
 
 > (If error:) Waiting for you to figure it out ...
 
-See solution.spirv if you are not successful.
+See `solution.spvasm` if you are not successful.
 
 ## Locations
 

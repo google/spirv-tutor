@@ -1,7 +1,7 @@
 # An Interface Variable
 
 Building on the previous exercise, we will now try to change the variable type from global to input.
-`exercise.spirv` contains a vertex shader, so this variable would be a vertex attribute.
+`exercise.spvasm` contains a vertex shader, so this variable would be a vertex attribute.
 
 As a reminder, please have [the SPIR-V specification][SPIRV-spec] handy.
 
@@ -43,8 +43,8 @@ the error message partially specifying ids numerically, and partially by their a
 to be confusing.  Try the following scripts to see your SPIR-V with numerical ids and friendly
 names:
 
-    $ ../scripts/id_to_names exercise.spirv
-    $ ../scripts/names_to_id exercise.spirv
+    $ ../scripts/id_to_names exercise.spvasm
+    $ ../scripts/names_to_id exercise.spvasm
 
 Back to the validation error, it's saying that the interface variable is used by the entry point (we
 loaded from it in `main`), but it's not listed as an interface.  Look up `OpEntryPoint` in the

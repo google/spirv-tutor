@@ -59,15 +59,15 @@ Give that a whirl with `./validate`.
 
 > Waiting for you to complete this part of the exercise ...
 
-If you are stuck, you can take a peek at `solution.spirv`, but don't cheat or you think you are
+If you are stuck, you can take a peek at `solution.spvasm`, but don't cheat or you think you are
 learning but you are not.
 
 > Waiting for you to really complete this part of the exercise ...
 
 Let's experiment a bit too.  What happens if you set both offsets (in `OpMemberDecorate`
 instructions) to 0?  What error does `spirv-val` (the command used to validate the SPIR-V in
-`exercise.spirv`, called from `./validate`) generate?  What if you set the first offset to 0 and the
-second to 10?  What about 0 and 32?
+`exercise.spvasm`, called from `./validate`) generate?  What if you set the first offset to 0 and
+the second to 10?  What about 0 and 32?
 
 ## Set and Binding Qualifications
 

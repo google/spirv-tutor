@@ -112,15 +112,15 @@ Self-explanatory instructions!
 
 ## Try it out
 
-The above SPIR-V can be found in `exercise.spirv`.  Try validating it (and generating the
+The above SPIR-V can be found in `exercise.spvasm`.  Try validating it (and generating the
 corresponding GLSL) by running:
 
     $ ./validate
 
 Neat!  If you want to see the output colored by `spirv-dis`, try:
 
-    $ ../scripts/names_to_id exercise.spirv
+    $ ../scripts/names_to_id exercise.spvasm
 
 If you want to see (some of) the ids use "friendly names" instead of numbers, try:
 
-    $ ../scripts/id_to_names exercise.spirv
+    $ ../scripts/id_to_names exercise.spvasm

@@ -28,7 +28,10 @@ it's strongly recommended not to be consulted until the exercise is complete.
 **Warning:** passively reading the tutorials will quickly become boring.  Do get your hands dirty.
 
 When opening the SPIR-V files, it is recommended to enable some syntax highlighting for readability.
-With vim for example, `set ft=lisp` is an improvement over no highlighting.
+With vim for example, you can install [this excellent plugin][1], otherwise `set ft=lisp` is an
+improvement over no highlighting.
+
+[1]: https://github.com/kbenzie/vim-spirv
 
 ## Troubleshooting
 

@@ -4,7 +4,7 @@ In the previous exercise, we declared a uniform buffer.  That was rather useless
 so let's fix that.  In this exercise, we will read from that uniform buffer and finally initialize
 `crucial_data` with data worthy of the name.
 
-If you have been impatient and going to `solution.spirv` prematurely before, try to really do this
+If you have been impatient and going to `solution.spvasm` prematurely before, try to really do this
 one on your own.
 
 ## Type Pointers and Access Chains
@@ -107,14 +107,14 @@ As always, use `./validate` to validate and see what GLSL you end up with.
 Stuck?  Don't give up!  Why not reread this whole exercise?
 
 > Waiting for you to really try to complete this part of the exercise without looking at
-> `solution.spirv` ...
+> `solution.spvasm` ...
 
 Good job!  This was probably the second most exciting part of SPIR-V.  By the way, now that our
 little SPIR-V is not so little anymore, you could see a little summary of what each exercise does by
 taking the `diff` of the two files:
 
 ```bash
-$ diff exercise.spirv solution.spirv
+$ diff exercise.spvasm solution.spvasm
 ```
 
 ## (Optional) The Extra 1.6Km

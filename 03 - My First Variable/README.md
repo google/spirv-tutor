@@ -63,9 +63,9 @@ Back to `OpTypeFloat`, the human-readable form of the instruction is:
 %float = OpTypeFloat 32    ; or %5 instead of %float, 5 being a new id
 ```
 
-Place this right after (or right before) the `OpTypeVoid` line in `exercise.spirv`.  Notes:
+Place this right after (or right before) the `OpTypeVoid` line in `exercise.spvasm`.  Notes:
 
-- You can consult `solution.spirv` if you get stuck, though it's recommended that you learn through
+- You can consult `solution.spvasm` if you get stuck, though it's recommended that you learn through
   experimentation.
 - The placement of the instruction matters.  SPIR-V requires an ordering of instructions, grouped in
   sections.  You can read about this in section _2.3. Physical Layout of a SPIR-V Module and
@@ -104,7 +104,7 @@ This instruction has an optional argument (and thus a variable length).  We won'
 argument in this tutorial.  You should be able to write the instruction on your own now.  Place it
 right after the `OpTypePointer` instruction.
 
-Note: Consult `solution.spirv` if you get stuck, but do so as a last resort.  You will learn much
+Note: Consult `solution.spvasm` if you get stuck, but do so as a last resort.  You will learn much
 better by try and error.
 
 ### Better GLSL

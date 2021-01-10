@@ -48,7 +48,7 @@ index an array with `OpAccessChain`, but not with `OpCompositeExtract`.  Take a 
 description of _Indexes_ in `OpAccessChain` to see what restrictions apply!  If you are curious to
 know how `someVec4Var[i]` can be implemented, take a look at `OpVectorExtractDynamic`.
 
-Alright, we know the instruction now.  Let's get to coding.  First, modify `exercise.spirv` to load
+Alright, we know the instruction now.  Let's get to coding.  First, modify `exercise.spvasm` to load
 (`OpLoad`) both `props.shininess` and `props.smoothness`.  `props.smoothness` is already loaded, so
 loading the other is a matter of copy paste.  Next, use `OpCompositeExtract` four times to extract
 the `x` and `y` components of both `props.shininess` and `props.smoothness`.  In case it's not
@@ -67,8 +67,8 @@ Once the `vec4` is constructed, store (`OpStore`) it in `crucial_data` as usual.
 
 > Waiting for you to complete this part of the exercise ...
 
-The solution can be found in `solution1.spirv`.  There's an alternative instruction that can be used
-here, presented in `solution2.spirv`.  Read the next section if you are interested.
+The solution can be found in `solution1.spvasm`.  There's an alternative instruction that can be
+used here, presented in `solution2.spvasm`.  Read the next section if you are interested.
 
 ## (Optional) An Alternative; Vector Shuffling
 
@@ -81,4 +81,4 @@ from this logical vector.  This is _the_ way to implement swizzle (where both ve
 same), but can come in handy in situations like in this exercise.
 
 Try removing all the `OpCompositeExtract` and `OpCompositeConstruct` instructions and replacing them
-all with a single `OpVectorShuffle` instruction.  `solution2.spirv` has the answer.
+all with a single `OpVectorShuffle` instruction.  `solution2.spvasm` has the answer.
