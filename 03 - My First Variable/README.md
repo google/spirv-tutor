@@ -59,7 +59,7 @@ length | opcode | Result Type <tid> | Result <id> | Param1 | ... -> %id = OpX %t
 
 Back to `OpTypeFloat`, the human-readable form of the instruction is:
 
-```elisp
+```swift
 %float = OpTypeFloat 32    ; or %5 instead of %float, 5 being a new id
 ```
 
@@ -88,7 +88,7 @@ Click on _Storage Class_ to see what values it can take.  For a global variable,
 `Private` storage class.  Hopefully, by now you should be able to figure out how to write the
 instruction in human-readable SPIR-V.  Place this after the `OpTypeFloat` instruction:
 
-```elisp
+```swift
 %floatptr = OpTypePointer Private %float    ; again, feel free to use numerical ids
 ```
 
@@ -116,7 +116,7 @@ tutorial to give this variable a readable name.
 
 Debug instructions are placed right after the "boilerplate" header, in this case `OpEntryPoint`.
 
-```elisp
+```swift
      OpName %variable "fancy_variable"
 ```
 

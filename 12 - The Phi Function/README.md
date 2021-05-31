@@ -8,7 +8,7 @@ written to as a new variable; `x2 = x1 + 1`.
 SSA form makes a lot of things easier for the optimizer, but we aren't going to get bogged down on
 the details.  If you want to, you can read a bit about it [on Wikipedia][SSA].  Funnily enough,
 SPIR-V isn't entirely in SSA form.  You might recall from the previous exercise that we wrote to the
-same output variable in both the true and false blocks of an if!
+same output variable in both the true and false blocks of an `if`!
 
 So how is SPIR-V in SSA form?  It's true that every "intermediate" result is written to in exactly
 one place; that would be the ids.  Writes to memory however (through `OpVariable`s) are allowed to

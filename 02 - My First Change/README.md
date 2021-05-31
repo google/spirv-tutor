@@ -20,13 +20,13 @@ substitute for `%3` can be `%main`, and a good substitute for `%1` can be `%void
 
 Now try introducing an intentional mistake.  For example, change the definition of `%1` to:
 
-```elisp
+```swift
 %void = OpTypeVoid
 ```
 
 but keep `%1` elsewhere intact.  What does `./validate` say?  Now try changing `%2` as well:
 
-```elisp
+```swift
      OpCapability Shader
      OpMemoryModel Logical GLSL450
      OpEntryPoint Vertex %3 "main"
@@ -52,7 +52,7 @@ To see the SPIR-V after named ids are resolved, you can assemble and disassemble
 Revert `exercise.spvasm` back to its original state.  Here's how it looked like, in case this is not
 a `git` checkout:
 
-```elisp
+```swift
      OpCapability Shader
      OpMemoryModel Logical GLSL450
      OpEntryPoint Vertex %3 "main"
@@ -76,7 +76,7 @@ How can `main` be renamed then?  SPIR-V can include debug instructions, one of w
 "name" to an id.  Look up `OpName` in the SPIR-V spec.  Try adding the following instruction right
 after the `OpEntryPoint` line:
 
-```elisp
+```swift
      OpName %3 "new_name_for_main"
 ```
 

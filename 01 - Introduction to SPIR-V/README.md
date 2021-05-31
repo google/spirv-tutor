@@ -19,7 +19,7 @@ During all these tutorials, please have [the SPIR-V specification][SPIRV-spec] h
 Let's take the boilerplate out of the way.  Here's the minimum required to have a valid shader (that
 does nothing):
 
-```elisp
+```swift
      OpCapability Shader
      OpMemoryModel Logical GLSL450
      OpEntryPoint Vertex %3 "main"
@@ -33,21 +33,21 @@ does nothing):
 
 Let's go through this line by line:
 
-```elisp
+```swift
      OpCapability Shader
 ```
 
 It's a shader!  There are other capabilities, that the SPIR-V could declare up front, like the fact
 that it may use 16-bit float instructions, or that it uses transform feedback.
 
-```elisp
+```swift
      OpMemoryModel Logical GLSL450
 ```
 
 Consider this boilerplate.  It declares that the shader uses logical addresses (as opposed to
 physical) and that it uses the GLSL memory model.
 
-```elisp
+```swift
      OpEntryPoint Vertex %3 "main"
 ```
 
@@ -59,7 +59,7 @@ point.
 The SPIR-V may very well contain code for multiple shaders, possibly sharing some functions, and it
 can have multiple entry points.
 
-```elisp
+```swift
 %1 = OpTypeVoid
 ```
 
@@ -74,7 +74,7 @@ As an exercise, look up `OpTypeVoid` in the SPIR-V spec.  Simply search for `OpT
 until you find a link to the instruction, or the table that defines the instruction itself.  No need
 to bother with the binary representation of the instruction.
 
-```elisp
+```swift
 %2 = OpTypeFunction %1
 ```
 
@@ -84,7 +84,7 @@ id `%2`.
 
 What if a function type needed parameters?  Look up `OpTypeFunction` in the SPIR-V spec.
 
-```elisp
+```swift
 %3 = OpFunction %1 None %2
 ```
 
@@ -95,14 +95,14 @@ instruction is redundantly specified.
 What is `None`?  Look up `OpFunction` in the spec, then click on "Function Control".
 
 
-```elisp
+```swift
 %4 = OpLabel
 ```
 
 A label, marking the beginning of a code block.  Used for "jump" instructions.  You can ignore this
 for now.
 
-```elisp
+```swift
      OpReturn
      OpFunctionEnd
 ```

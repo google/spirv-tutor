@@ -32,7 +32,7 @@ You can probably guess how to set the debug name `object_properties` for the str
 you set debug names to its members?  That's `OpMemberName`, do give it a brief look in the spec.
 For example:
 
-```elisp
+```swift
 OpMemberName %struct_type 1 "smoothness"
 ```
 

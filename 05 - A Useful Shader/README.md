@@ -74,7 +74,7 @@ Click on _Decoration_ to see what decorations there are.  Unsurprisingly, the lo
 called `Location`.  As `OpDecorate` doesn't produce a result, it looks like this in human-readable
 SPIR-V:
 
-```elisp
+```swift
      OpDecorate %variable Location Value
 ```
 

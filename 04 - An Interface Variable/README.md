@@ -30,7 +30,7 @@ it being declared.
 You can verify this by placing this instruction inside the function (right after the `OpLabel`
 instruction):
 
-```elisp
+```swift
 %8 = OpLoad %5 %7
 ```
 
@@ -55,7 +55,7 @@ SPIR-V spec.  What do you see about interfaces?
 This instruction takes a list of interface variables that this entry point accesses.  Add the
 id of the variable to this instruction and `./validate` should work again:
 
-```elisp
+```swift
      OpEntryPoint Vertex %3 "main" %7
 ```
 
