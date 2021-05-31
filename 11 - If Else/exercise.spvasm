@@ -1,0 +1,76 @@
+      OpCapability Shader
+      OpMemoryModel Logical GLSL450
+
+      OpEntryPoint Vertex %3 "main" %10 %12 %14
+
+      OpName %10 "fancy_attribute"
+      OpName %12 "useful_output"
+      OpName %14 "crucial_data"
+      OpName %7 "object_properties"
+      OpMemberName %7 0 "threshold"
+      OpMemberName %7 1 "highly_exclusive_bits"
+      OpName %16 "props"
+
+      OpDecorate %10 Location 0
+      OpDecorate %12 Location 0
+      OpDecorate %14 Location 1
+
+; Make the struct definition a uniform buffer, and specify its memory layout
+      OpDecorate %7 Block
+      OpMemberDecorate %7 0 Offset 0
+      OpMemberDecorate %7 1 Offset 16
+
+; Assign set/binding decorations to the uniform buffer variable
+      OpDecorate %16 DescriptorSet 2
+      OpDecorate %16 Binding 3
+
+; the `float` type
+ %5 = OpTypeFloat 32
+
+; the `vec4` type
+ %6 = OpTypeVector %5 4
+
+; the `{float, vec4}` struct type
+ %7 = OpTypeStruct %5 %6
+
+; the `int` type
+ %8 = OpTypeInt 32 1
+
+; in float fancy_attribute;
+ %9 = OpTypePointer Input %5
+%10 = OpVariable %9 Input
+
+; out float useful_output;
+%11 = OpTypePointer Output %5
+%12 = OpVariable %11 Output
+
+; out vec4 crucial_data;
+%13 = OpTypePointer Output %6
+%14 = OpVariable %13 Output
+
+; uniform object_properties { ... } props;
+%15 = OpTypePointer Uniform %7
+%16 = OpVariable %15 Uniform
+
+; Uniform pointer to `vec4`
+%17 = OpTypePointer Uniform %6
+
+; The integer constant 1
+%18 = OpConstant %8 1
+
+ %1 = OpTypeVoid
+ %2 = OpTypeFunction %1
+ %3 = OpFunction %1 None %2
+ %4 = OpLabel
+
+      ; useful_output = fancy_attribute;
+      %19 = OpLoad %5 %10
+            OpStore %12 %19
+
+      ; crucial_data = props.highly_exclusive_bits;
+      %20 = OpAccessChain %17 %16 %18
+      %21 = OpLoad %6 %20
+            OpStore %14 %21
+
+      OpReturn
+      OpFunctionEnd

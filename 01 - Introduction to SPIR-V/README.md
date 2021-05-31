@@ -59,7 +59,6 @@ point.
 The SPIR-V may very well contain code for multiple shaders, possibly sharing some functions, and it
 can have multiple entry points.
 
-
 ```elisp
 %1 = OpTypeVoid
 ```

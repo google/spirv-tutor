@@ -1,0 +1,123 @@
+      OpCapability Shader
+      OpMemoryModel Logical GLSL450
+
+      OpEntryPoint Vertex %3 "main" %11 %13 %15
+
+      OpName %11 "fancy_attribute"
+      OpName %13 "useful_output"
+      OpName %15 "crucial_data"
+      OpName %7 "object_properties"
+      OpMemberName %7 0 "threshold"
+      OpMemberName %7 1 "highly_exclusive_bits"
+      OpName %17 "props"
+
+      OpDecorate %11 Location 0
+      OpDecorate %13 Location 0
+      OpDecorate %15 Location 1
+
+; Make the struct definition a uniform buffer, and specify its memory layout
+      OpDecorate %7 Block
+      OpMemberDecorate %7 0 Offset 0
+      OpMemberDecorate %7 1 Offset 16
+
+; Assign set/binding decorations to the uniform buffer variable
+      OpDecorate %17 DescriptorSet 2
+      OpDecorate %17 Binding 3
+
+; the `float` type
+ %5 = OpTypeFloat 32
+
+; the `vec4` type
+ %6 = OpTypeVector %5 4
+
+; the `{float, vec4}` struct type
+ %7 = OpTypeStruct %5 %6
+
+; the `int` type
+ %8 = OpTypeInt 32 1
+
+; the `bool` type
+ %9 = OpTypeBool
+
+; in float fancy_attribute;
+%10 = OpTypePointer Input %5
+%11 = OpVariable %10 Input
+
+; out float useful_output;
+%12 = OpTypePointer Output %5
+%13 = OpVariable %12 Output
+
+; out vec4 crucial_data;
+%14 = OpTypePointer Output %6
+%15 = OpVariable %14 Output
+
+; uniform object_properties { ... } props;
+%16 = OpTypePointer Uniform %7
+%17 = OpVariable %16 Uniform
+
+; Uniform pointer to `float` and `vec4`
+%18 = OpTypePointer Uniform %5
+%19 = OpTypePointer Uniform %6
+
+; The integer constants 0 and 1
+%20 = OpConstant %8 0
+%21 = OpConstant %8 1
+
+; The float constants 0, 1.0 and vec4(0)
+%22 = OpConstantNull %5
+%23 = OpConstant %5 1.0
+%24 = OpConstantNull %6
+
+ %1 = OpTypeVoid
+ %2 = OpTypeFunction %1
+ %3 = OpFunction %1 None %2
+ %4 = OpLabel
+
+      ; load fancy_attribute
+      %25 = OpLoad %5 %11
+
+      ; load props.threshold
+      %26 = OpAccessChain %18 %17 %20
+      %27 = OpLoad %5 %26
+
+      ; fancy_attribute < props.threshold
+      %28 = OpFOrdLessThan %9 %25 %27
+
+      ; if (fancy_attribute < props.threshold) jump %29; else jump %30;
+      OpSelectionMerge %33 None
+      OpBranchConditional %28 %29 %30
+
+
+      ; the true block
+      %29 = OpLabel
+
+                  ; useful_output = 0;
+                  OpStore %13 %22
+
+                  ; crucial_data = vec4(0);
+                  OpStore %15 %24
+
+            ; End the block
+            OpBranch %33
+
+
+      ; the false block
+      %30 = OpLabel
+
+                  ; useful_output = 1.0;
+                  OpStore %13 %23
+
+                  ; crucial_data = props.highly_exclusive_bits;
+                  %31 = OpAccessChain %19 %17 %21
+                  %32 = OpLoad %6 %31
+                        OpStore %15 %32
+
+            ; End the block
+            OpBranch %33
+
+
+; the merge block
+%33 = OpLabel
+
+      OpReturn
+      OpFunctionEnd
