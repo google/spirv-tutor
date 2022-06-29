@@ -17,6 +17,14 @@ Take a look at `OpTypePointer` in the spec and click on _Storage Class_ (or just
 class").  Can you spot the storage class necessary to declare an input variable?  Great, let's use
 that instead of `Private`.
 
+Add this to the SPIR-V too, right after `OpName`:
+
+```elisp
+OpDecorate %7 Location 0
+```
+
+We'll get to `OpDecorate` in the next exercise.
+
 How is the GLSL (through `./validate`) looking now?
 
 ## The Entry Point

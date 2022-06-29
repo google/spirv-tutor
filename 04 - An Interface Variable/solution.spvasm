@@ -6,6 +6,8 @@
 
      OpName %7 "fancy_attribute"
 
+     OpDecorate %7 Location 0
+
 ; in float fancy_attribute;
 %5 = OpTypeFloat 32
 %6 = OpTypePointer Input %5
