@@ -29,7 +29,7 @@ spirv-val "$as_out" --target-env "$target_env"
 echo "Generating GLSL ..."
 glsl_out="$(mktemp)"
 "$build_dir"/spirv-cross --vulkan-semantics "$as_out" --output "$glsl_out"
-if which highlight > /dev/null; then
+if which highlight > /dev/null 2>&1; then
   cat "$glsl_out" | highlight --syntax c -O xterm256 --style darkness
 else
   cat "$glsl_out"
